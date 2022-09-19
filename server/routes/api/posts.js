@@ -26,8 +26,12 @@ async function loadPostsCollection() {
 
 //get post
 router.get('/', async (req,res) => {
-    const posts = await loadPostsCollection();
-    res.send(await posts.find().toArray());
+    try{
+        const posts = await loadPostsCollection();
+        res.send(await posts.find().toArray());
+    }catch(err){
+        console.log(err);
+    }
 })
 
 //Add post
